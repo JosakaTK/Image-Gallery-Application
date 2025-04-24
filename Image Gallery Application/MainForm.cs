@@ -86,5 +86,40 @@ namespace Image_Gallery_Application
 
             displayForm.ShowDialog();
         }
+
+        private void btnOrganize_Click(object sender, EventArgs e)
+        {
+            object selectedItem = lbImages.SelectedItem;
+            int index = lbImages.SelectedIndex;
+
+            string[] tags = new string[lbImages.Items.Count];
+            lbImages.Items.CopyTo(tags, 0);
+            Array.Sort(tags, StringComparer.OrdinalIgnoreCase);
+
+            List<Image> sortedImages = new List<Image>();
+            foreach (string tag in tags)
+            {
+                int originalIndex = lbImages.Items.IndexOf(tag);
+                sortedImages.Add(imageName[originalIndex]);
+            }
+
+            lbImages.BeginUpdate();
+            try
+            {
+                lbImages.Items.Clear();
+                lbImages.Items.AddRange(tags);
+                imageName = sortedImages;
+
+                if (selectedItem != null && lbImages.Items.Contains(selectedItem))
+                {
+                    lbImages.SelectedItem = selectedItem;
+                    pbImage.Image = imageName[lbImages.SelectedIndex];
+                }
+            }
+            finally
+            {
+                lbImages.EndUpdate();
+            }
+        }
     }
 }
