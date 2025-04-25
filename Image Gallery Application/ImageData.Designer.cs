@@ -30,19 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.imageDetailsDataSet = new Image_Gallery_Application.ImageDetailsDataSet();
-            this.imageDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.imageDetailsTableAdapter = new Image_Gallery_Application.ImageDetailsDataSetTableAdapters.ImageDetailsTableAdapter();
             this.imageTagDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imageNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateUploadedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.imageDetailsDataSet = new Image_Gallery_Application.ImageDetailsDataSet();
+            this.imageDetailsTableAdapter = new Image_Gallery_Application.ImageDetailsDataSetTableAdapters.ImageDetailsTableAdapter();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblsubTitle = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnOtherView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageDetailsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageDetailsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageDetailsDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -54,26 +53,12 @@
             this.imageNameDataGridViewTextBoxColumn,
             this.dateUploadedDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.imageDetailsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(107, 156);
+            this.dataGridView1.Location = new System.Drawing.Point(112, 156);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(553, 150);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // imageDetailsDataSet
-            // 
-            this.imageDetailsDataSet.DataSetName = "ImageDetailsDataSet";
-            this.imageDetailsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // imageDetailsBindingSource
-            // 
-            this.imageDetailsBindingSource.DataMember = "ImageDetails";
-            this.imageDetailsBindingSource.DataSource = this.imageDetailsDataSet;
-            // 
-            // imageDetailsTableAdapter
-            // 
-            this.imageDetailsTableAdapter.ClearBeforeFill = true;
             // 
             // imageTagDataGridViewTextBoxColumn
             // 
@@ -99,13 +84,27 @@
             this.dateUploadedDataGridViewTextBoxColumn.Name = "dateUploadedDataGridViewTextBoxColumn";
             this.dateUploadedDataGridViewTextBoxColumn.Width = 125;
             // 
+            // imageDetailsBindingSource
+            // 
+            this.imageDetailsBindingSource.DataMember = "ImageDetails";
+            this.imageDetailsBindingSource.DataSource = this.imageDetailsDataSet;
+            // 
+            // imageDetailsDataSet
+            // 
+            this.imageDetailsDataSet.DataSetName = "ImageDetailsDataSet";
+            this.imageDetailsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // imageDetailsTableAdapter
+            // 
+            this.imageDetailsTableAdapter.ClearBeforeFill = true;
+            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Mongolian Baiti", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(250, 32);
+            this.lblTitle.Location = new System.Drawing.Point(258, 32);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(267, 46);
+            this.lblTitle.Size = new System.Drawing.Size(260, 45);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Image Details";
             // 
@@ -113,7 +112,7 @@
             // 
             this.lblsubTitle.AutoSize = true;
             this.lblsubTitle.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsubTitle.Location = new System.Drawing.Point(300, 93);
+            this.lblsubTitle.Location = new System.Drawing.Point(305, 93);
             this.lblsubTitle.Name = "lblsubTitle";
             this.lblsubTitle.Size = new System.Drawing.Size(166, 24);
             this.lblsubTitle.TabIndex = 2;
@@ -122,7 +121,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(475, 357);
+            this.btnExit.Location = new System.Drawing.Point(320, 353);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(137, 39);
             this.btnExit.TabIndex = 3;
@@ -130,23 +129,11 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnOtherView
-            // 
-            this.btnOtherView.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOtherView.Location = new System.Drawing.Point(155, 357);
-            this.btnOtherView.Name = "btnOtherView";
-            this.btnOtherView.Size = new System.Drawing.Size(208, 39);
-            this.btnOtherView.TabIndex = 4;
-            this.btnOtherView.Text = "Detailed View";
-            this.btnOtherView.UseVisualStyleBackColor = true;
-            this.btnOtherView.Click += new System.EventHandler(this.btnOtherView_Click);
-            // 
             // ImageData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnOtherView);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblsubTitle);
             this.Controls.Add(this.lblTitle);
@@ -155,8 +142,8 @@
             this.Text = "ImageData";
             this.Load += new System.EventHandler(this.ImageData_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageDetailsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageDetailsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageDetailsDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,6 +161,5 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblsubTitle;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnOtherView;
     }
 }

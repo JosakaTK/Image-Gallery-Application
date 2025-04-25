@@ -41,5 +41,11 @@ namespace Image_Gallery_Application
         {
             this.Close();
         }
+
+        private void btnDatabaseView_Click(object sender, EventArgs e)
+        {
+            var displayForm = new ImageData();
+            displayForm.ShowDialog();
+        }
     }
 }

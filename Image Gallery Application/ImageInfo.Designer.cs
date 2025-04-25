@@ -36,6 +36,7 @@
             this.lblFileName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnDatabaseView = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,9 +50,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(16, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(556, 153);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -124,8 +125,8 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(243, 175);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(337, 175);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 31);
             this.btnClose.TabIndex = 1;
@@ -133,14 +134,27 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnDatabaseView
+            // 
+            this.btnDatabaseView.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatabaseView.Location = new System.Drawing.Point(135, 175);
+            this.btnDatabaseView.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDatabaseView.Name = "btnDatabaseView";
+            this.btnDatabaseView.Size = new System.Drawing.Size(157, 31);
+            this.btnDatabaseView.TabIndex = 2;
+            this.btnDatabaseView.Text = "Database View";
+            this.btnDatabaseView.UseVisualStyleBackColor = true;
+            this.btnDatabaseView.Click += new System.EventHandler(this.btnDatabaseView_Click);
+            // 
             // ImageInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 219);
+            this.Controls.Add(this.btnDatabaseView);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ImageInfo";
             this.Text = "ImageInfo";
             this.groupBox1.ResumeLayout(false);
@@ -159,5 +173,6 @@
         public System.Windows.Forms.Label lblDate;
         public System.Windows.Forms.Label lblFileName;
         public System.Windows.Forms.Label lblTags;
+        private System.Windows.Forms.Button btnDatabaseView;
     }
 }

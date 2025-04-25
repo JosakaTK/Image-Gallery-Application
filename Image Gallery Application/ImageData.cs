@@ -24,12 +24,6 @@ namespace Image_Gallery_Application
 
         }
 
-        private void btnOtherView_Click(object sender, EventArgs e)
-        {
-            var displayForm = new ImageInfo();
-            displayForm.ShowDialog();
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();

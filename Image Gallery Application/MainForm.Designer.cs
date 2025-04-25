@@ -46,7 +46,7 @@
             // gbImageTitle
             // 
             this.gbImageTitle.Controls.Add(this.pbImage);
-            this.gbImageTitle.Font = new System.Drawing.Font("Mongolian Baiti", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbImageTitle.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbImageTitle.Location = new System.Drawing.Point(20, 53);
             this.gbImageTitle.Margin = new System.Windows.Forms.Padding(4);
             this.gbImageTitle.Name = "gbImageTitle";
@@ -123,7 +123,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lbImages);
-            this.groupBox1.Font = new System.Drawing.Font("Mongolian Baiti", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(576, 53);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
@@ -135,9 +135,9 @@
             // 
             // lbImages
             // 
-            this.lbImages.Font = new System.Drawing.Font("Mongolian Baiti", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbImages.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImages.FormattingEnabled = true;
-            this.lbImages.ItemHeight = 14;
+            this.lbImages.ItemHeight = 21;
             this.lbImages.Location = new System.Drawing.Point(8, 23);
             this.lbImages.Margin = new System.Windows.Forms.Padding(4);
             this.lbImages.Name = "lbImages";
@@ -152,7 +152,7 @@
             this.label1.Location = new System.Drawing.Point(165, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(288, 46);
+            this.label1.Size = new System.Drawing.Size(280, 45);
             this.label1.TabIndex = 7;
             this.label1.Text = "Image Gallery";
             // 
