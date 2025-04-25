@@ -67,6 +67,11 @@
     <Compile Include="ImageData.Designer.cs">
       <DependentUpon>ImageData.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageDetailsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageDetailsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ImageInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +114,17 @@
     <EmbeddedResource Include="TagForm.resx">
       <DependentUpon>TagForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ImageDetailsDataSet.xsc">
+      <DependentUpon>ImageDetailsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ImageDetailsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ImageDetailsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ImageDetailsDataSet.xss">
+      <DependentUpon>ImageDetailsDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
