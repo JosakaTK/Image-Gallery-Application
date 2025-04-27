@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Image_Gallery_Application
 {
     public partial class MainForm : Form
     {
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\jojob\\Source\\Repos\\Image-Gallery-Application2\\Image Gallery Application\\PhotoDatabase.mdf\";Integrated Security=True";
         public Dictionary<string, PhotoInfo> photoList = new Dictionary<string, PhotoInfo>();
         private List<Image> imageName = new List<Image>();
         private string[] fileType = { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
@@ -29,22 +31,70 @@ namespace Image_Gallery_Application
                     openFileDialog.FileName.ToLower().Contains(fileType[3]) ||
                     openFileDialog.FileName.ToLower().Contains(fileType[4]))
                 {
-                    string fileName = Path.GetFileName(openFileDialog.FileName);
-                    string date = DateTime.Now.ToString("yyyy-MM-dd");
-                    PhotoInfo photoInfo = new PhotoInfo(fileName, date);
-                    photoList.Add(setTag(),photoInfo);
-                    imageName.Add(Image.FromFile(openFileDialog.FileName)); 
-                    lbImages.Items.Add(photoList.Last().Key);
+                    try
+                    {
+                        string fileName = Path.GetFileName(openFileDialog.FileName);
+                        string date = DateTime.Now.ToString("yyyy-MM-dd");
+                        PhotoInfo photoInfo = new PhotoInfo(fileName, date);
+                        photoList.Add(setTag(), photoInfo);
+                        imageName.Add(Image.FromFile(openFileDialog.FileName));
+                        lbImages.Items.Add(photoList.Last().Key);
+                        toDataBase();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error: Tag has already been used.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Please select a valid image file.");
+                    MessageBox.Show("Error: Please select a valid image file.");
                 }
             }
             else
             {
-                MessageBox.Show("No file selected.");
+                MessageBox.Show("Error: No file selected.");
             }
+        }
+
+        public void toDataBase()
+        {
+            SqlConnection connection;
+            SqlCommand command;
+            string query = "INSERT INTO PhotoData (PhotoID, PhotoTag, PhotoName, DateUploaded) VALUES (@ID, @Tag, @FileName, @Date)";
+
+
+            using (connection = new SqlConnection(connectionString))
+            using (command = new SqlCommand(query, connection))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+            {
+                command.Parameters.AddWithValue("@ID", photoList.Count);
+                command.Parameters.AddWithValue("@Tag", photoList.Last().Key);
+                command.Parameters.AddWithValue("@FileName", photoList.Last().Value.FileName);
+                command.Parameters.AddWithValue("@Date", photoList.Last().Value.Date);
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+            connection.Close();
+        }
+
+        public void clearDataBase()
+        {
+            SqlConnection connection;
+            SqlCommand command;
+
+            connection  = new SqlConnection(connectionString);
+            command = new SqlCommand("DELETE FROM PhotoData", connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         public string setTag()
@@ -71,19 +121,39 @@ namespace Image_Gallery_Application
 
         private void lbImages_SelectedIndexChanged(object sender, EventArgs e)
         {
-            gbImageTitle.Text = lbImages.SelectedItem.ToString();
-            pbImage.Image = imageName[lbImages.SelectedIndex];
+            try
+            {
+                gbImageTitle.Text = lbImages.SelectedItem.ToString();
+                pbImage.Image = imageName[lbImages.SelectedIndex];
+            }
+            catch
+            {
+                MessageBox.Show("Please select an image from the list.");
+            }
         }
 
         private void btnView_Click(object sender, EventArgs e)
         {
+            SqlConnection connection;
+            SqlCommand command;
             int index = lbImages.SelectedIndex;
             var displayForm = new ImageInfo();
 
-            displayForm.lblTags.Text = photoList.ElementAt(index).Key;
-            displayForm.lblDate.Text = photoList.ElementAt(index).Value.Date;
-            displayForm.lblFileName.Text = photoList.ElementAt(index).Value.FileName;
+            connection = new SqlConnection(connectionString);
+            command = new SqlCommand("SELECT * FROM PhotoData WHERE PhotoID = @ID", connection);
 
+            command.Parameters.AddWithValue("@ID", (index + 1));
+            connection.Open();
+            using (SqlDataReader reader = command.ExecuteReader()) 
+            {
+                if (reader.Read())
+                {
+                    displayForm.lblTags.Text = reader["PhotoTag"].ToString();
+                    displayForm.lblDate.Text = reader["DateUploaded"].ToString();
+                    displayForm.lblFileName.Text = reader["PhotoName"].ToString();
+                }
+                connection.Close();
+            }
             displayForm.ShowDialog();
         }
 
@@ -120,6 +190,16 @@ namespace Image_Gallery_Application
             {
                 lbImages.EndUpdate();
             }
+        }
+
+        private void btnDataBase_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            clearDataBase();
         }
     }
 }
